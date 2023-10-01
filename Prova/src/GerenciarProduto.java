@@ -41,15 +41,15 @@ public class GerenciarProduto {
 
         // System.out.println(produto.getQuantidade());
 
-        System.out.println("Quantos produtos deseja cadastrar?");
+        System.out.println("Quantos tipos de produto deseja cadastrar?");
         qtdProdutoCadastro = Integer.parseInt(scan.nextLine());
 
         for (int i = 0; i < qtdProdutoCadastro; i++) {
 
-            System.out.println("Digite o codigo da categoria " + (i + 1));
+            System.out.println("Digite o codigo da categoria do produto " + (i + 1));
             codCate = Integer.parseInt(scan.nextLine());
 
-            System.out.println("Digite o nome da Categoria " + (i + 1));
+            System.out.println("Digite o nome da categoria do produto " + (i + 1));
             nomeCate = scan.nextLine();
 
             System.out.println("Digite o codigo do produto " + (i + 1));
@@ -81,7 +81,7 @@ public class GerenciarProduto {
         System.out.println(lista);
         int count = 1;
         for (Produto saldo : lista) {
-            System.out.println("A quantidade em estoque do produto " + (count++) + " é: " + saldo.getQuantidade());
+            System.out.println("A quantidade em estoque do produto " + (count++) + " :" + saldo.getNome() + " é: " + saldo.getQuantidade());
         }
     }
 }
