@@ -22,23 +22,15 @@ public class GerenciarProduto {
 
 
         //  Categoria categoria = new Categoria(42, "Livro");
-
         // Produto produto = new Produto(3, "O guia", 30.00, 24, categoria);
-
         // lista.add(produto);
-
         //  System.out.println(lista);
-
         // System.out.println(produto);
-
         // produto.entradaEstoque(5);
         //  System.out.println(produto);
-
         // System.out.println(produto.getQuantidade());
-
         //  produto.saidaEstoque(2);
         // System.out.println(produto);
-
         // System.out.println(produto.getQuantidade());
 
         System.out.println("Quantos tipos de produto deseja cadastrar?");
@@ -75,13 +67,67 @@ public class GerenciarProduto {
             System.out.println("Se quiser remover uma quantidade desse produto do estoque, digite a quantidade do produto, se não quiser remover basta digitar 0. Produto: " + (i + 1));
             delP = Integer.parseInt(scan.nextLine());
             produto1.saidaEstoque(delP);
-
         }
 
+        System.out.println("Saída dos produtos adicionados na lista: ");
         System.out.println(lista);
+        System.out.println();
+        System.out.println("Saída apenas do status da quantidade de cada produto: ");
         int count = 1;
         for (Produto saldo : lista) {
             System.out.println("A quantidade em estoque do produto " + (count++) + " :" + saldo.getNome() + " é: " + saldo.getQuantidade());
         }
+
+
+        boolean menu = true;
+
+        while (menu) {
+            System.out.println();
+            System.out.println("Se deseja adicionar produtos no estoque - Digite 1. Se deseja remover produtos do estoque - Digite 2. Para sair digite 0 ");
+            int add = Integer.parseInt(scan.nextLine());
+
+            if (add == 0) {
+                menu = false;
+            }
+
+            if (add == 1) {
+                int indice = 1;
+                System.out.println("Segue abaixo a lista de todos os produtos cadastrados: ");
+                for (Produto itens : lista) {
+                    System.out.println("Contém: " + itens.getQuantidade() + " unidades do produto: " + itens.getNome() + " no estoque. O número desse produto é: " + indice++);
+                }
+
+                System.out.println("Qual produto deseja adicionar no estoque? Selecione pelo número do produto: ");
+                int produto = Integer.parseInt(scan.next());
+                Produto produtoEscolhido = lista.get((produto) - 1);
+                System.out.println("Qual quantidade de " + produtoEscolhido.getNome() + " deseja add no estoque? ");
+                int qtdP = Integer.parseInt(scan.next());
+                produtoEscolhido.entradaEstoque(qtdP);
+            }
+            if (add == 2) {
+                int indice = 1;
+                System.out.println("Segue abaixo a lista de todos os produtos cadastrados: ");
+                for (Produto itens : lista) {
+                    System.out.println("Contém: " + itens.getQuantidade() + " unidades do produto: " + itens.getNome() + " no estoque. O número desse produto é: " + indice++);
+                }
+
+                System.out.println("Qual produto deseja remover no estoque? Selecione pelo número do produto: ");
+                int produto = Integer.parseInt(scan.next());
+                Produto produtoEscolhido = lista.get((produto) - 1);
+                System.out.println("Qual quantidade de " + produtoEscolhido.getNome() + " deseja remover do estoque? ");
+                int qtdP = Integer.parseInt(scan.next());
+                produtoEscolhido.saidaEstoque(qtdP);
+            }
+
+            System.out.println("Lista atualizada de produtos: ");
+            int count1 = 1;
+            for (Produto saldo : lista) {
+                System.out.println("A quantidade em estoque do produto " + (count1++) + " - " + saldo.getNome() + " é: " + saldo.getQuantidade());
+            }
+        }
     }
 }
+
+
+
+
